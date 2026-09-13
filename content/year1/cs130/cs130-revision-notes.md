@@ -508,6 +508,8 @@ Therefore $5x + 3$ is even. $\square$
 
 </div>
 
+<br/>
+
 #### Theorem 2
 
 **Theorem 2.** For every $n \in \mathbb{N}$, the integer $1 + (-1)^n(2n-1)$ is divisible by $4$.
@@ -550,10 +552,11 @@ Therefore the expression is divisible by $4$ when $n$ is odd. Since the two case
 
 </div>
 
-
 **NOTE**: make sure that all of the cases cover all of the possibilities (cases do not have to be disjoint)
 
-#### Theorem 3:
+<br/>
+
+#### Theorem 3
 
 **Theorem 3**. $\sqrt{2} \notin \mathbb{Q}$
 
@@ -583,18 +586,22 @@ So $\sqrt{2} \notin \mathbb{Q}$. $\square$
 
 </div>
 
+<br/>
+
 #### Theorem 4
 
 **Theorem 4a**. $(\exists x \space P(x)) \lor (\exists x \space Q(x)) \equiv \exists x \space (P(x) \lor Q(x))$
 
 **Theorem 4b**. $(\forall x \space P(x)) \land (\forall x \space Q(x)) \equiv \forall x \space (P(x) \land Q(x))$
 
+<div class="proof">
+
 **Proof for second theorem:**
 
-<div class="math-left">
+<div class="proof-body">
 
 $$
-\begin{aligned}
+\derivation{
 \text{RHS} 
 & \equiv \forall x \space (P(x) \land Q(x)) \\
 & \equiv \neg \neg \forall x (P(x) \land Q(x)) & \text{double negation} \\
@@ -603,13 +610,11 @@ $$
 & \equiv \neg(\exists x \space \neg P(x) \lor \exists x \space \neg Q(x)) & \text{distributing the } \lor \text{ via } \exists \text{ using first theorem} \\
 & \equiv \neg \exists x \space \neg P(x) \land \neg \exists x \space \neg Q(x) & \text{De-Morgan's law} \\
 & \equiv \forall x \space P(x) \land \forall x \space Q(x) & \text{converting } \neg \exists x \space P(x) \text{ into } \forall x \space \neg P(x) \\
-& \equiv \text{LHS}
-\end{aligned}
+& \equiv \text{LHS } \square
+}
 $$
 
-$$
-\text{QED.}
-$$
+</div>
 
 </div>
 
@@ -619,23 +624,35 @@ $$
 
 **Theorem 5**. There exists irrational $a$ and $b$ such that $a^b$ is rational.
 
+<div class="proof">
+
 **Proof:**
 
-<div class="math-left">
+<div class="proof-body">
 
-$$
-\text{We have } (\sqrt{2} ^ {\sqrt{2}}) ^ {\sqrt{2}} = \sqrt{2}^2 = 2 \text{ which is rational.} \\
-\quad \\
-\textbf{Case } \sqrt{2} ^ {\sqrt{2}} \text{ is irrational:} \\
-\quad \quad \text{Then the proof is complete as } a = \sqrt{2} ^ {\sqrt{2}} \text{ , and } b = \sqrt{2} \text{, and } a ^ b = 2 \text{ which is rational} \\
-\quad \quad	b \text{ is irrational by Theorem 3} \\
-\quad \\
-\textbf{Case } \sqrt{2} ^ {\sqrt{2}} \text{ is rational:} \\
-\quad \quad \text{The proof is also complete as } a = \sqrt{2} \text{ and } b = \sqrt{2} \text{, and } b \text{ is irrational by Theorem 3.} \\
-\quad \\
-\text{Hence the proof is complete for both disjoint cases, so the proof is complete.} \\
-\text{QED.} \\
-$$
+We have $(\sqrt{2} ^ {\sqrt{2}}) ^ {\sqrt{2}} = \sqrt{2}^2 = 2$ which is rational.
+
+**Case** $\sqrt{2} ^ {\sqrt{2}}$ is irrational:
+
+<div class = "proof-body">
+
+Then the proof is complete as $a = \sqrt{2} ^ {\sqrt{2}}$ , and $b = \sqrt{2}$, and $a ^ b = 2$ which is rational.
+
+$b$ is irrational by Theorem 3.
+
+</div>
+
+**Case** $\sqrt{2} ^ {\sqrt{2}}$ is rational:
+
+<div class="proof-body">
+
+The proof is also complete as $a = \sqrt{2}$ and $b = \sqrt{2}$, and $b$ is irrational by Theorem 3.
+
+</div>
+
+Hence the proof is complete for both disjoint cases, so the proof is complete. $\square$
+
+</div>
 
 </div>
 
@@ -853,10 +870,8 @@ Lets define some new notation:
 
 Now we have
 
-<div class="math-left">
-
 $$
-\begin{aligned}
+\derivation{
 \{b \in \mathbb{Z} : \forall \text{ prime } a < 7, a | b\}
 &= \text{all the multiples of 30} \\
 &= \{k \in \mathbb{Z} : 2 \space | \space b \land 3 \space | \space b \land 5 \space | \space b\} \\
@@ -864,11 +879,8 @@ $$
 &= D_2 \cap D_3 \cap D_5 \\
 &= \bigcap_{a \in \{2, 3, 5\}}{D_a} \\
 &= \bigcap{\{D_2, D_3, D_5\}} \\
-\end{aligned}
+}
 $$
-
-</div>
-
 
 Now, let $P = \{a \in \mathbb{N} : a \text{ is prime} \}$
 
