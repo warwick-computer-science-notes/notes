@@ -900,30 +900,37 @@ This set contains 4 elements
 
 ### Introduction to Relations
 
-**Def**. A *relation* between sets $A$ and $B$, is a set $R \subseteq A \times B$, denoted 
+**Def**. A *relation* between sets $A$ and $B$, is a set $R \subseteq A \times B$, denoted
 
-$$R : A \leftrightarrow B\text{ , i.e. } A \underleftrightarrow{R} B$$
+$$
+R : A \leftrightarrow B\text{ , i.e. } A \xleftrightarrow{R} B
+$$
 
 Alternatively, we write $aRb \iff(a, b) \in R$
 
-**Examples**: 
-* Divisibility Relation: $\{(a, b) \in \mathbb{Z}^2 : a \space| \space b\}$
-* $\{(a, b) \in \{2, 3, 4\} \times \{5, 6, 7, 8\} : a \space | \space b\}$ = $\{(2, 6), (2, 8), (3, 6), (4, 8)\}$
+**Examples**:
+
+- Divisibility Relation: $\{(a, b) \in \mathbb{Z}^2 : a \space| \space b\}$
+- $\{(a, b) \in \{2, 3, 4\} \times \{5, 6, 7, 8\} : a \space | \space b\}$ = $\{(2, 6), (2, 8), (3, 6), (4, 8)\}$
 
 Relations can be depicted as a **bipartite graph** between two sets of nodes, elements in A and elements in B, and by drawing edges where $(a, b) \in R \subseteq A \times B$
 
 E.g. $A = B$ = set of all people
-* Parent relation: $P = (a, b) :a$ is a parent of $b \}$
-* Grandparent relation: $G = \{(a, b) : (a, c) \in P \land (c, b) \in P$ for some $c\}$
-* $aGb \iff \exists c : aPc \land cPb$
+
+- Parent relation: $P = (a, b) :a$ is a parent of $b \}$
+- Grandparent relation: $G = \{(a, b) : (a, c) \in P \land (c, b) \in P$ for some $c\}$
+- $aGb \iff \exists c : aPc \land cPb$
 
 #### Relation Composition
 
 **Def**: The composition of two relations $R : A \leftrightarrow B$ and $S : B \leftrightarrow C$ is the relation
 
-$$R \circ S \equiv \{(a, c) : aRb \land bRc \text{ for some } b \in B\}, \quad \quad (a, b) \in R, (b, c) \in S$$
+$$
+R \circ S \equiv \{(a, c) : aRb \land bRc \text{ for some } b \in B\}, \quad \quad (a, b) \in R, (b, c) \in S
+$$
 
 **Def**. A relation is said to be **ON** a set if the relation spans between the same set on both sides.
+
 - One copy of the set can be drawn instead of two copies if the relation is **ON** the set.
 - If $(a, a) \in R : A \leftrightarrow A, a \in A$, then a "self-loop" can be drawn going from the number to itself.
 
@@ -933,17 +940,19 @@ $$R \circ S \equiv \{(a, c) : aRb \land bRc \text{ for some } b \in B\}, \quad \
 
 **Examples**
 
-* Let $R = \{(n, m) \in \{2, 3, ..., 9\}^2 : n = m^2\} = \{(4, 2), (9, 3)\}$
+- Let $R = \{(n, m) \in \{2, 3, ..., 9\}^2 : n = m^2\} = \{(4, 2), (9, 3)\}$
 
-* Let $S = \{(m, k) \in \{2, 3, ..., 9\}^2 : m \space | \space k\} = \{(2, 2), (2, 4), (2, 6), (2, 8), (3, 3), (3, 6), (3, 9), (4, 4), (4, 8), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9)\}$
+- Let $S = \{(m, k) \in \{2, 3, ..., 9\}^2 : m \space | \space k\} = \{(2, 2), (2, 4), (2, 6), (2, 8), (3, 3), (3, 6), (3, 9), (4, 4), (4, 8), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9)\}$
 
-* Then, $R \circ S = \{(4, 2), (4, 4), (4, 6), (4, 8), (9, 3), (9, 6), (9, 9)\}$
+- Then, $R \circ S = \{(4, 2), (4, 4), (4, 6), (4, 8), (9, 3), (9, 6), (9, 9)\}$
 
-* $S \circ R = \{(2, 2), (4, 2), (3, 3), (9, 3)\}$
-	* observe that $R \circ S \ne S \circ R$
+- $S \circ R = \{(2, 2), (4, 2), (3, 3), (9, 3)\}$
+
+  - observe that $R \circ S \ne S \circ R$
 
 
 Another example is the **less than relation**, which is defined as
+
 $$< : \mathbb{N} \leftrightarrow \mathbb{N}$$
 
 and the **greater than relation**:
@@ -957,15 +966,19 @@ But $< \circ > \space \ne \space > \circ <$, because 0 is not greater than any n
 #### Inverse of a Relation
 
 **Def**. The inverse of a relation $R : A \leftrightarrow B$ is the relation $R^{-1} = \{(b, a) : aRb\}$
+
 - e.g. $> = <^{-1}$, $< = >^{-1}$
 
 The empty set is its own inverse: $\emptyset ^{-1} = \emptyset$
+
 The equality relation is its own inverse: $(=^{-1}) = (=)$
-$=_ {A} \space = \{(a, a) : a \in A\}$
+
+$$=_ {A} \space = \{(a, a) : a \in A\}$$
+
 e.g. $(2, 4), (4, 8) \in R^{-1} \circ S$ because 4 divides the square of 2, and 8 divides the square of 2.
 
-**Theorem:**
-$S^{-1} \circ R^{-1} \equiv (R \circ S) ^{-1}$
+**Theorem**. $S^{-1} \circ R^{-1} \equiv (R \circ S) ^{-1}$
+
 - The inverse operator distributes but reverses the order of $R$ and $S$
 
 #### Properties of Relations
@@ -974,50 +987,66 @@ Consider a relation $R$ **on** a set $S$, defined as $R : S \leftrightarrow S$
 
 **Def**. A relation $R$ is *reflexive* if every element is related to itself, i.e. 
 
-$$\forall x \in S : \space xRx$$
+$$
+\forall x \in S : \space xRx
+$$
 
 **Def**. A relation $R$ is *symmetric* if $aRb$, then $bRa$, i.e.
 
-$$\forall x, y \in S : \space xRy \to yRx$$
+$$
+\forall x, y \in S : \space xRy \to yRx
+$$
 
-* note. $\forall x, y \in S \equiv \forall x \in S, \forall y \in S$
+- note. $\forall x, y \in S \equiv \forall x \in S, \forall y \in S$
 
 **Def**. A relation $R$ is *anti-symmetric* if we have $aRb$ and $bRa$, then $a = b$, i.e.
 
-$$\forall x, y \in S : (xRy \land yRx) \to x = y$$
+$$
+\forall x, y \in S : (xRy \land yRx) \to x = y
+$$
 
 **Def**. A relation $R$ is *transitive* if $aRb$ and $bRc$, then $aRc$, i.e.
 
-$$\forall x, y, z \in S : (xRy \land yRz) \to xRz$$
+$$
+\forall x, y, z \in S : (xRy \land yRz) \to xRz
+$$
 
 #### Examples (on $\mathbb{Z}$)
 
-Consider the relation $x = y$
+**Consider the relation $x = y$**
+
 - It is reflexive, as every integer is equal to itself
 - It is symmetric, as $y = x$, then $x = y$
 - It is anti-symmetric, as $x = y \land y = x \implies x = y$ as $x = y \implies x = y$
 - It is transitive, as if $x = y \land y = z$, then $x = z$
 
-Consider the relation $x \le y$
+**Consider the relation $x \le y$**
+
 - It is reflexive, as every integer is less than or equal to itself
-- It is not symmetric, as e.g. $5 \le 7$ but $7 \centernot\le 5$
+- It is not symmetric, as e.g. $5 \le 7$ but $7 \nleq 5$
 - It is anti-symmetric, as if $x \le y \land y \le x$ then $x = y$
 - It is transitive, as if $x \le y \land y \le z$ then $x \le z$
 
-Consider the relation $x < y$
+**Consider the relation $x < y$**
+
 - It is not reflexive, as $x < x \equiv F$
-- It is not symmetric, as e.g. $5 < 7$ but $7 \centernot\le 5$
+- It is not symmetric, as e.g. $5 < 7$ but $7 \nless 5$
 - It is anti-symmetric, as there are no values of $x, y$ such that $x < y \land y > x$, so the vacuous implication holds for all $x, y$
 - It is transitive, similar to $x \le y$
 
-Consider the total relation, every integer is related to every integer:
-	$xRy \space \forall x, y \in \mathbb{Z} \equiv T \equiv \mathbb{Z}^2$
+**Consider the total relation, every integer is related to every integer:**
+
+$$
+xRy \space \forall x, y \in \mathbb{Z} \equiv T \equiv \mathbb{Z}^2
+$$
+
 - It is reflexive
 - It is symmetric, as all $x$ and $y$ are related
 - It is not anti-symmetric, as $5R7 \land 7R5$ but $5 \ne 7$
 - It is transitive, as the RHS of the implication is always true
 
-Consider the relation $x \equiv y \pmod 3$
+**Consider the relation $x \equiv y \pmod 3$**
+
 - It is reflexive, as $x = x$ for all $x$
 - It is symmetric, as $x \bmod 3 = y \bmod 3 \equiv y \bmod 3 = x \bmod 3$
 - It is not anti-symmetric, as $5 \equiv 2 \pmod 3$ and $2 \equiv 5 \bmod 3$ but $2 \ne 5$
@@ -1025,7 +1054,8 @@ Consider the relation $x \equiv y \pmod 3$
 
 #### Examples (on $2^A$, the power set of $A$)
 
-Consider the relation $\subseteq$
+**Consider the relation $\subseteq$**
+
 - It is reflexive, as $X \subseteq X$ for all $X$
 - It is not symmetric, as smaller sets can be a subset of a larger set but the larger set cannot be a subset of the smaller set
 - It is anti-symmetric, as if $X \subseteq Y \land Y \subseteq X \equiv X = Y$
@@ -1034,14 +1064,16 @@ Consider the relation $\subseteq$
 ### Equivalence and Partial Order Relations
 
 **Def**. A relation $R$ on a set $S$ is an **equivalence** relation if it is
-* reflexive, 
-* symmetric,
-* and transitive.
+
+- reflexive,
+- symmetric,
+- and transitive.
 
 **Def**. A relation $R$ on a set $S$ is a **partial order** if it is 
-* reflexive, 
-* **anti-symmetric**,
-* and transitive.
+
+- reflexive,
+- **anti-symmetric**,
+- and transitive.
 
 **Def**. A total relation is a partial-order relation if also $\forall x, y \in S, xRy \lor yRx$
 
@@ -1050,52 +1082,103 @@ Consider the relation $\subseteq$
 #### Equivalence Relations
 
 Suppose $E$ is an equivalence relation on a set $S$
+
 - Reminder: $E$ is reflexive, symmetric and transitive
 
 **Definition**: $[x] := \{y \in S : xEy\}$ is the **equivalence class** of $x$
+
 - An alternative notation is $[x]_E$, which denotes that the equivalence class is with respect to the equivalence relation $E$
 - Equivalence classes form a partition of the set $S$, such that each equivalence class is a **disjoint subset** of the set $S$
 
+<div class="proof">
+
 **Lemma 1:** If $y \in [x]$, then $[y] = [x]$ (for all $x, y \in S$)
-**Proof:** 
-	**Subset direction:**
-		Suppose $z \in [y]$. Then $yEz$
-		Also from $y \in [x]$, we have $xEy$
-		By transitivity of $E$, $xEy \land yEz \implies xEz$
-		$\therefore z \in [x], \therefore [y] \subseteq [x]$ *(endcase)*
-	**Superset direction:**
-		Suppose $z \in [x]$. Then $xEz$
-		Also from $y \in [x]$, we have $xEy$
-		By symmetry of $E$, $xEy \implies yEx$
-		By transitivity of $E$, $yEx \land xEz \implies yEz$
-		$\therefore z \in [y], \therefore [x] \subseteq [y]$ *(endcase)*
-	$\therefore [y] = [x]$
-	**QED**
+
+**Proof:**
+
+<div class="proof-body">
+
+**Subset direction:**
+
+<div class="proof-body">
+
+Suppose $z \in [y]$. Then $yEz$
+
+Also from $y \in [x]$, we have $xEy$
+
+By transitivity of $E$, $xEy \land yEz \implies xEz$
+
+$\therefore z \in [x], \therefore [y] \subseteq [x]$ *(endcase)*
+
+</div>
+
+**Superset direction:**
+
+<div class="proof-body">
+
+Suppose $z \in [x]$. Then $xEz$
+
+Also from $y \in [x]$, we have $xEy$
+
+By symmetry of $E$, $xEy \implies yEx$
+
+By transitivity of $E$, $yEx \land xEz \implies yEz$
+
+$\therefore z \in [y], \therefore [x] \subseteq [y]$
+
+</div>
+
+$\therefore [y] = [x]$ $\square$
+
+</div>
+
+</div>
+
+<div class="proof">
 
 **Lemma 2:** Either $[x] = [y]$, or $[x] \cap [y] = \emptyset$ (for all $x, y \in S$)
 
 **Proof technique:**
-- $P \lor Q \equiv \neg P \implies Q \equiv \neg Q \implies P$
 
-**Proof:** It suffices to show that $[x] \cap [y] \ne \emptyset \implies [x] = [y]$ 
-													($Q = [x] \cap [y] = \emptyset$, $P = [x] = [y]$)
-	Suppose $z \in [x] \cap [y]$
-	Then $z \in [x] \land z \in [y]$
-	By Lemma 1, $[z] = [x]$ and $[z] = [y]$
-	$\therefore [x] = [y]$
-	**QED**
+- $P \lor Q \equiv \neg P \to Q \equiv \neg Q \to P$
+
+**Proof:**
+
+<div class="proof-body">
+
+It suffices to show that $[x] \cap [y] \ne \emptyset \implies [x] = [y]$
+
+($Q = [x] \cap [y] = \emptyset$, $P = [x] = [y]$)
+
+Suppose $z \in [x] \cap [y]$
+
+Then $z \in [x] \land z \in [y]$
+
+By Lemma 1, $[z] = [x]$ and $[z] = [y]$
+
+$\therefore [x] = [y]$ $\square$
+
+</div>
+
+</div>
 
 **Theorem:** The equivalence classes of $E$ partition $S$,
-		i.e. their union is $S$ and they are pairwise disjoint
-		i.e. $\bigcup \space \{[x] : x \in S\} = S \land \forall x, y \in S, x \ne y \implies [x] \cap [y] = \emptyset$
+
+i.e. their union is $S$ and they are pairwise disjoint
+
+i.e. $\bigcup \space \{[x] : x \in S\} = S \land \forall x, y \in S, x \ne y \implies [x] \cap [y] = \emptyset$
+
 - Notice that the second statement was already proved in **Lemma 2**
 - To prove the first case, $\{[x] : x \in S\} \subseteq S$ and $S \subseteq \{[x] : x \in S\}$
-	- The second half is trivial, because $E$ is reflexive, so $x \in [x]$, so every value of $x$ belongs to an equivalence class
+
+  - The second half is trivial, because $E$ is reflexive, so $x \in [x]$, so every value of $x$ belongs to an equivalence class
 	
 #### Quotient Sets of Equivalence Relations
 
 Suppose $E$ is an equivalence relation on a set $S$
-Then $\frac{S}{E}$ the quotient of $S$ with respect to $E$
+
+Then $S \setminus E$, the quotient set of $S$ with respect to the relation $E$,
+
 is $\{[x]_E : x \in S\}$, the set of all equivalence classes with respect to $E$
 
 | Equivalence relation on $\mathbb{Z}$ | Quotient Set                                                                 |
@@ -1189,7 +1272,7 @@ $2^U \setminus \cong$ is the set of all sets with a particular size (dividing by
 
 **Example:** The equinumerosity relation $\cong$ is an equivalence relation on $2^{\{a, b, c\}} = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{b, c\}, \{a, b, c\}\}$.
 
-$\emptyset \cong \emptyset$, $\emptyset \centernot\cong \{a, b\}$, $\{a\} \cong \{c\}$, …
+$\emptyset \cong \emptyset$, $\emptyset \ncong \{a, b\}$, $\{a\} \cong \{c\}$, …
 
 $(2^{\{a, b, c\}} \setminus \cong) \space = \{\{\emptyset\}, \{\{a\}, \{b\}, \{c\}\}, \{\{a, b\}, \{b, c\}, \{a, b\}\}, \{\{a, b, c\}\}\}$.
 
@@ -1208,7 +1291,7 @@ $\mathbb{N} \cong \mathbb{N^2}$ (by drawing diagonal lines on a coordinate plane
 $\mathbb{N} \cong \mathbb{N}^k$ for all $k \in \mathbb{N} \setminus \{0\}$
 $\mathbb{N} \cong \mathbb{Q}$
 $\mathbb{N} \cong \mathbb{Z} \times \mathbb{N}$
-$\mathbb{N} \centernot\cong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
+$\mathbb{N} \ncong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
 
 **Theorem:** For every set $X$, there does not exist an injection $f : 2^X \to X$
 - For a finite set $X$, $2^n > n$, and $f : A \to B$ where $f$ is injective, implies that $|A| \le |B|$
@@ -1231,7 +1314,7 @@ $\mathbb{N} \centernot\cong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
 	If $f(Z) \notin Z$:
 		Since $Z \subseteq X$, and $f(Z) \notin Z$, by the definition of $Z$, we have $f(Z) \in Z$
 
-**Theorem:** $\mathbb{R} \centernot\cong \mathbb{N}$
+**Theorem:** $\mathbb{R} \ncong \mathbb{N}$
 **Proof:**
 	Consider $x \in [0; 1)$.
 	Then $x$ in binary is of the form $0.[0-1]*$, where $[0-1]*$ represents zero or more 0s or 1s. (binary decimal expansion).
@@ -1240,7 +1323,7 @@ $\mathbb{N} \centernot\cong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
 	For any $x \in \mathbb{R}$, consider $g(x) = \{q \in \mathbb{Q} : q < x\}$
 		- $g(x)$ is a injection, as each set of rational numbers uniquely define any real $x$, as the rational numbers are dense.
 	We can then establish an injection between the reals and the power set of the naturals.
-	Hence by using the theorem from above, we can prove $R \centernot\cong N$
+	Hence by using the theorem from above, we can prove $R \ncong N$
 
 **Theorem (Cantor):** For any set $X$, there is no injection $2^X \to X$.
 **Lemma 1:** There exists an injection $\mathbb{R} \to 2^\mathbb{N}$.
@@ -1250,7 +1333,7 @@ $\mathbb{N} \centernot\cong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
 **Proof:** 
 	$f(X) = 0.d_0 d_1 d_2 ...$ where $d_n = \begin{cases} 1 & n \in X \\ 0 & n \notin X \end{cases}$
 		$= \sum_{n=0}^\infty d_n * 10^{-n-1}$
-**Corollary:** $\mathbb{N} \centernot\cong \mathbb{R}$
+**Corollary:** $\mathbb{N} \ncong \mathbb{R}$
 **Proof:**
 	Suppose $h : \mathbb{N} \to \mathbb{R}$ is a bijection.
 	Then for $f : 2^\mathbb{N} \to \mathbb{R}$ an injection by Lemma 2,
@@ -1454,7 +1537,7 @@ $$|V| - |E| = 1$$
 - An element $x$ is **minimal** if there is no other element $y \in X$ such that $y \preccurlyeq x$.
 	- There can be multiple minimal elements
 - An element $y$ is the **least** if $\forall y : X : x \preccurlyeq y$
-- Two elements $x, y$ are **incomparable** when $x \centernot\preccurlyeq y \land y \centernot\preccurlyeq x$
+- Two elements $x, y$ are **incomparable** when $x \not\preccurlyeq y \land y \not\preccurlyeq x$
 - Notation: $x < y$ if $x \preccurlyeq y \land x \ne y$
 - Notation: $x <\cdot y$ means "x is covered by y", if $x < y \land \neg\exists z : x < z \land z < y$
 
