@@ -1331,70 +1331,174 @@ $$(2^{\{a, b, c\}} \setminus \cong) \space = \{\{\emptyset\}, \{\{a\}, \{b\}, \{
 
 ## 8. Cardinality of Sets
 
-**Definition:** A set $X$ is:
-	- *finite* if $X \cong F_n$ for some $n \in \mathbb{N}$ where $F_n := \{0, 1, 2, ..., n-1\}$.
-	- _countably infinite_ if $X \cong \mathbb{N}$.
-	- _countable_ if it is either _finite_ or _countably infinite_.
-	- _uncountable_ if it is not _countable_
+### Countability
 
-$\mathbb{N} \cong \mathbb{N}$ ($f(n) = n$, $f^{-1}(n) = n$)
-$\mathbb{N} \cong \mathbb{N} \setminus \{0\}$ ($f(n) = n + 1$, $f^{-1}(n) = n - 1$)
-$\mathbb{N} \cong \{n^2 : n \in \mathbb{N}\} = \{0, 1, 4, 9, 16, 25, 36, ...\}$ ($f(n) = n^2$, $f(n) = \sqrt{n}$)
-$\mathbb{N} \cong \mathbb{N^2}$ (by drawing diagonal lines on a coordinate plane)
-$\mathbb{N} \cong \mathbb{N}^k$ for all $k \in \mathbb{N} \setminus \{0\}$
-$\mathbb{N} \cong \mathbb{Q}$
-$\mathbb{N} \cong \mathbb{Z} \times \mathbb{N}$
-$\mathbb{N} \ncong \mathbb{R}$ ($\mathbb{R}$ is uncountable)
+**Def**. A set $X$ is:
+- *finite* if $X \cong F_n$ for some $n \in \mathbb{N}$ where $F_n := \{0, 1, 2, ..., n-1\}$.
+- *countably infinite* if $X \cong \mathbb{N}$.
+- *countable* if it is **either** finite or countably infinite.
+- *uncountable* if it is not countable
 
-**Theorem:** For every set $X$, there does not exist an injection $f : 2^X \to X$
-- For a finite set $X$, $2^n > n$, and $f : A \to B$ where $f$ is injective, implies that $|A| \le |B|$
+**Facts**.
+- $\mathbb{N} \cong \mathbb{N}$
+	* **Proof**: $f(n) = n$, $f^{-1}(n) = n$, is a bijection.
+- $\mathbb{N} \cong \mathbb{N} \setminus \{0\}$
+	* **Proof**: $f(n) = n + 1$, $f^{-1}(n) = n - 1$, is a bijection.
+- $\mathbb{N} \cong \{n^2 : n \in \mathbb{N}\} = \{0, 1, 4, 9, 16, 25, 36, ...\}$
+	* **Proof**: $f(n) = n^2$, $f(n) = \sqrt{n}$, is a bijection.
+- $\mathbb{N} \cong \mathbb{Z}$
+	* **Proof Idea**: we alternate 0, -1, 1, -2, 2, -3, 3, ...
+- $\mathbb{N} \cong \mathbb{N^2}$
+	* **Proof Idea**: by drawing diagonal lines on a coordinate plane
+- $\mathbb{N} \cong \mathbb{N}^k$ for all $k \in \mathbb{N} \setminus \{0\}$
+	* (proof excluded)
+- $\mathbb{N} \cong \mathbb{Q}$
+	* (proof excluded)
+- $\mathbb{N} \ncong \mathbb{R}$
+	* $\mathbb{R}$ is uncountable - proof below
 
-**Proof:**
-	Suppose for a contradiction, we have a function $f : 2^X \to X$ that is injective.
-	Consider $Y = \{x \in X : (\exists Z \in 2^X : f(Z) = x \land x \notin Z)\}$
-	Is $f(Y) \in Y$?
+### Cantor's Theorem
 
-**Theorem:** For any set $X$, there does not exist an injection $f : 2^X \to X$
-**Proof:**
-	Suppose $f : 2^X \to X$ is an injection, to get a contradiction
-	Let $Z = \{f(Y) : Y \subseteq X \land f(Y) \notin Y\}$
-		- Notice that $Y \subseteq X \equiv Y \in 2^X$, so $f(Y) \in X$. Hence $Z \subseteq X$
-	If $f(Z) \in Z$: 
-		Then $f(Z) = f(Y)$ for some $Y : Y \subseteq X \land f(Y) \notin Y$
-		Because $f$ is an injection, $f(Z) = f(Y) \implies Z = Y$
-		Then $Z \subseteq Y \land f(Z) \notin Z$
-		$\therefore f(Z) \notin Z$
-	If $f(Z) \notin Z$:
-		Since $Z \subseteq X$, and $f(Z) \notin Z$, by the definition of $Z$, we have $f(Z) \in Z$
+**Theorem (Cantor):** For every set $X$, there does not exist an injection $f : 2^X \to X$
+* For a finite set $X$ with $|X| = n$, and $f : A \to B$ where $f$ is injective, this implies that $|A| \le |B|$, but this isn't possible as $2^n \nleq n$
+
+<div class="proof">
+
+**Proof (diagonalisation argument):**
+
+<div class="proof-body">
+
+Suppose for contradiction's sake, that $f : 2^X \to X$ is an injection
+
+Let $Z = \{f(Y) : Y \subseteq X \land f(Y) \notin Y\}$
+
+Notice that $Y \subseteq X \equiv Y \in 2^X$, so $f(Y) \in X$. Hence $Z \subseteq X$
+
+Now, we ask the question, is $f(Z) \in Z$?
+
+**Case** $f(Z) \in Z$: 
+
+<div class="proof-body">
+
+Then $f(Z) = f(Y)$ for some $Y : Y \subseteq X \land f(Y) \notin Y$
+
+Because $f$ is an injection, $f(Z) = f(Y) \implies Z = Y$
+
+Then $Z \subseteq Y \land f(Z) \notin Z$
+
+$\therefore f(Z) \notin Z$
+
+</div>
+
+**Case** $f(Z) \notin Z$:
+
+<div class="proof-body">
+
+Since $Z \subseteq X$, and $f(Z) \notin Z$, by the definition of $Z$, we have $f(Z) \in Z$
+
+</div>
+
+In either case, we reach a contradiction.
+
+Therefore, our assumption was wrong, and $f$ does not exist. $\square$
+
+</div>
+
+</div>
+
+<br/>
 
 **Theorem:** $\mathbb{R} \ncong \mathbb{N}$
-**Proof:**
-	Consider $x \in [0; 1)$.
-	Then $x$ in binary is of the form $0.[0-1]*$, where $[0-1]*$ represents zero or more 0s or 1s. (binary decimal expansion).
-	By representing the position of each $1$ in the binary decimal expansion of $x$ by a natural number, we can create a _bijection_ between each $x$ and a subset of the natural numbers. 
-		- E.g. $0.10101$ is related to $\{0, 2, 4\}$ in this bijection.
-	For any $x \in \mathbb{R}$, consider $g(x) = \{q \in \mathbb{Q} : q < x\}$
-		- $g(x)$ is a injection, as each set of rational numbers uniquely define any real $x$, as the rational numbers are dense.
-	We can then establish an injection between the reals and the power set of the naturals.
-	Hence by using the theorem from above, we can prove $R \ncong N$
 
-**Theorem (Cantor):** For any set $X$, there is no injection $2^X \to X$.
+<div class="proof">
+
+**Proof:**
+
+<div class="proof-body">
+
+Consider $x \in [0; 1)$.
+
+Then $x$ in binary is of the form $0.[0-1]*$, where $[0-1]*$ represents zero or more 0s or 1s. (binary decimal expansion).
+
+By representing the position of each $1$ in the binary decimal expansion of $x$ by a natural number, we can create a _bijection_ between each $x$ and a subset of the natural numbers. 
+* E.g. $0.10101$ is related to $\{0, 2, 4\}$ in this bijection.
+
+For any $x \in \mathbb{R}$, consider $g(x) = \{q \in \mathbb{Q} : q < x\}$
+* $g(x)$ is a injection, as each set of rational numbers uniquely define any real $x$, as the rational numbers are dense.
+
+We can then establish an injection between the reals and the power set of the naturals.
+
+Hence by using the theorem from above, we can prove $R \ncong N$
+
+</div>
+
+</div>
+
+<br/>
+
 **Lemma 1:** There exists an injection $\mathbb{R} \to 2^\mathbb{N}$.
-**Proof:** 
-	$f(x) = \{g(q) : q \in \mathbb{Q}, q < x\}$, where $g : \mathbb{Q} \to \mathbb{N}$ is a bijection.
-**Lemma 2:** There exists an injection $2^\mathbb{N} \to \mathbb{R}$.
-**Proof:** 
-	$f(X) = 0.d_0 d_1 d_2 ...$ where $d_n = \begin{cases} 1 & n \in X \\ 0 & n \notin X \end{cases}$
-		$= \sum_{n=0}^\infty d_n * 10^{-n-1}$
-**Corollary:** $\mathbb{N} \ncong \mathbb{R}$
-**Proof:**
-	Suppose $h : \mathbb{N} \to \mathbb{R}$ is a bijection.
-	Then for $f : 2^\mathbb{N} \to \mathbb{R}$ an injection by Lemma 2,
-	$f \circ h^{-1} : 2^\mathbb{N} \to \mathbb{N}$ is an injection $\implies$ contradiction!
-	**QED**
 
-**Cantor-Schroeder-Bernstein Theorem**
-	- If there exist an injection from $A \to B$, and if there exist an injection from $B \to A$, then there exists a bijection $A \leftrightarrow B$.
+<div class="proof">
+
+**Proof:** 
+
+<div class="proof-body">
+
+$f(x) = \{g(q) : q \in \mathbb{Q}, q < x\}$, where $g : \mathbb{Q} \to \mathbb{N}$ is a bijection.
+
+</div>
+
+</div>
+
+**Lemma 2:** There exists an injection $2^\mathbb{N} \to \mathbb{R}$.
+
+<div class="proof">
+
+**Proof:** 
+
+<div class="proof-body">
+
+$$
+\derivation{
+f(X)
+&= 0.d_0 d_1 d_2 ... \text{ where }  d_n = \begin{cases} 1 & n \in X \\ 0 & n \notin X \end{cases} \\
+&= \sum_{n=0}^\infty d_n * 10^{-n-1}
+}
+$$
+
+</div>
+
+</div>
+
+**Corollary:** $\mathbb{N} \ncong \mathbb{R}$
+
+<div class="proof">
+
+**Proof:**
+
+<div class="proof-body">
+
+Suppose $h : \mathbb{N} \to \mathbb{R}$ is a bijection.
+
+Then for $f : 2^\mathbb{N} \to \mathbb{R}$ an injection by Lemma 2,
+
+$f \circ h^{-1} : 2^\mathbb{N} \to \mathbb{N}$ is an injection.
+
+But by Cantor's theorem, $2^\mathbb{N} \to \mathbb{N}$ cannot be an injection.
+
+This is a contradicition. $\square$
+
+</div>
+
+</div>
+
+<br/>
+
+**Theorem (Cantor-Schroeder-Bernstein):** If there exist an injection from $A \to B$, and if there exist an injection from $B \to A$, then there exists a bijection $A \leftrightarrow B$.
+
+(proof omitted).
+
+<br/>
 	
 ## 9. Mathematical Induction
 
