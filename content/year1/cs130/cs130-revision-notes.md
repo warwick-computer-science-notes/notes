@@ -1187,14 +1187,15 @@ is $\{[x]_E : x \in S\}$, the set of all equivalence classes with respect to $E$
 | $\mathbb{Z}^2$                       | $\{\mathbb{Z}\}$                                                             |
 | $x \equiv y \pmod 3$                 | $\{\{..., -3, 0, 3, ...\}, \{..., -2, 1, 4, ...\}, \{..., -1, 2, 5, ...\}\}$ |
 
+<br/>
+
 ## 7. Functions
 
 #### Introduction to Functions
 
-**Definition:** A relation $F : X \leftrightarrow Y$ is a function if $\forall x \in X, \exists! \space y \in Y : xFy$
+**Def:** A relation $F : X \leftrightarrow Y$ is a function if $\forall x \in X, \exists! \space y \in Y : xFy$
 - This means that every value of $x$ is related to one and only one value of $y$
-
-For such $F$, we write $F(x) = y$ instead of $xFy$
+- For such $F$, we write $F(x) = y$ instead of $xFy$
 
 | Example relations                                   | Is a Function?                                   |
 | :-------------------------------------------------- | ------------------------------------------------ |
@@ -1206,75 +1207,127 @@ For such $F$, we write $F(x) = y$ instead of $xFy$
 First function: $g : \mathbb{R} \to \mathbb{R}, g(x) = x^2$
 Third function: $h : \mathbb{R}_{\ge 0} \to \mathbb{R}, h(x) = \sqrt{x}$
 
+<br/>
+
 #### Function Notation
 
-$f(X) = \{f(x) : x \in X\}$ is the "image" of the function, where $X$ is a set
-	E.g. $g(\mathbb{R}) = \{x^2 : x \in \mathbb{R}\} = \mathbb{R}_{\ge 0}$
-$f^{-1}(Y) = \{x : f(x) \in Y\}$ is the "inverse image" of the function
-	E.g. $g^{-1}([-1;1]) = \{x : -1 \le x^2 \le 1\} = [-1; 1] = g^{-1}([0;1])$
-$f^{-1}(y) = \{x : f(x) = y\}$.
-	E.g. $g^{-1}(1) = \{-1, 1\}$
-$f^{-1}(Y) = \bigcup_{y \in Y}f^{-1}(y)$
+**Def**. The *image* of a function $f$ under input set $X$ is the **set of possible outputs** from inputs $x \in X$, defined as
 
-Restricted Function: $f |_X = \{(x, f(x)) : x \in X\}$
-	$X$ must be included within the domain of $f$
+$$f(X) = \{f(x) : x \in X\}$$
 
-E.g. $h|_{[0;4]} = \{(x, \sqrt{x}) : 0 \le x \le 4\}$
+- E.g. $g(\mathbb{R}) = \{x^2 : x \in \mathbb{R}\} = \mathbb{R}_{\ge 0}$
 
-$f \circ f'(x) := f'(f(x))$
+**Def**. The *inverse image* of a function $f$ under set $Y$ is the **set of possible inputs that have image $Y$**, defined as
+
+$$f^{-1}(Y) = \{x : f(x) \in Y\}$$
+
+- E.g. $g^{-1}([-1;1]) = \{x : -1 \le x^2 \le 1\} = [-1; 1] = g^{-1}([0;1])$
+
+**Def**. The *inverse image* of a function of **value** $y$ is the **set of possible values** that map to $y$, define as
+
+$$f^{-1}(y) = \{x : f(x) = y\}$$
+
+* E.g. $g^{-1}(1) = \{-1, 1\}$
+
+Relating the two *types* of inverse image, we have: 
+
+$$f^{-1}(Y) = \bigcup_{y \in Y}f^{-1}(y)$$
+
+**Def**. A *restricted version* of function $f$ under $X$ restricts the *domain* of $f$ to $X$, defined as
+
+$$f |_X = \{(x, f(x)) : x \in X\}$$
+
+* **NOTE**. $X$ must be included within the domain of $f$
+* E.g. $h|_{[0;4]} = \{(x, \sqrt{x}) : 0 \le x \le 4\}$
+
+**Function Composition**. The *composition* of two functions $f$ and $f'$ is written $f \circ f'$ and is defined as 
+
+$$f \circ f'(x) := f'(f(x))$$
+
 for $f : X \to Y$ and $f' : Y \to Z$
 
-E.g. $f(x) = x^2 + 1$, $f'(x) = x - 1$
-	$f \circ f'(x) = x^2$
-	$f' \circ f(x) = (x-1)^2+1 = x^2 - 2x + 2$
+* **NOTE**: $f$ is on the inside. This is a module convention and other sources may have it the other way round.
 
-$Y^X := \{ f : X \leftrightarrow Y : f$ is a function $\}$, where $X, Y$ are sets
-	or $\{f : X \to Y\}$
-$2^X$ is the power set of $X$
-$Y^n$ is the set of all $n$-tuples
-	$Y^n = \{(y_1, ..., y_n) : y_1, ... y_n \in Y\}$
-	$Y^{\{1, ..., n\}}$ is the set of all functions from $\{1, ..., n\}$ to $Y$
-	
-#### More on Functions and Sets
 
-$X^Y$ is the set of all functions from $Y$ to $X$
-	$\{Y, N\}^{\{a, b, c\}} = \{\{(a, N), (b, N), (c, N)\}, \{(a, N), (b, N), (c, Y)\}, \{(a, N), (b, Y), (c, N)\}, ..., \{(a, Y), (b, Y), (c, Y)\}\}$
-	- There are 8 functions in the set
+**Example**. If $f(x) = x^2 + 1$, and $f'(x) = x - 1$,
+* $f \circ f'(x) = x^2$
+* $f' \circ f(x) = (x-1)^2+1 = x^2 - 2x + 2$
 
-$2^{\{a, b, c}\} = \{\emptyset, \{c\}, \{b\}, \{b, c\}, \{a\}, \{a, c\}, \{a, b\}, \{a, b, c\}\}$
-$\{Y, N\}^3 = \{(N, N, N), (N, N, Y), (N, Y, N), (N, Y, Y), (Y, N, N), (Y, N, Y), (Y, Y, N), (Y, Y, Y)\}$
+#### Sets of Functions
 
-**Definition:** A function $f : A \to B$ is
-- _injective_ (one-to-one) if $\forall a, b \in A : a \ne b \implies f(a) \ne f(b)$
-- _surjective_ (onto) if $\forall b \in B : \exists a \in A : f(a) = b$ which is the same as $f(A) = B$
-- _bijective_ (one-to-one correspondence) if it is both _injective_ and _surjective_
+**Def**. We define $X^Y$ as the set of all functions from set $Y$ to set $X$, defined as
+
+$$X^Y := \{ f : Y \leftrightarrow X : f \text{ is a function }\} = \{f : Y \to X\}$$
+
+* $2^X$ is the power set of $X$
+* $Y^n$ is the set of all $n$-tuples
+* $Y^n = \{(y_1, ..., y_n) : y_1, ... y_n \in Y\}$
+* $Y^{\{1, ..., n\}}$ is the set of all functions from $\{1, ..., n\}$ to $Y$
+
+**Example**.
+
+$$
+\derivation{
+\{Y, N\}^{\{a, b, c\}}
+&= \text{set of all functions from } \{a, b, c\} \text{ to } \{Y, N\} \\
+&= \{\{(a, N), (b, N), (c, N)\}, \{(a, N), (b, N), (c, Y)\}, \{(a, N), (b, Y), (c, N)\}, ..., \{(a, Y), (b, Y), (c, Y)\}\} \\
+}
+$$
+
+* There are 8 functions in the set
+
+* This is analogous to $2^{\{a, b, c\}} = \{\emptyset, \{c\}, \{b\}, \{b, c\}, \{a\}, \{a, c\}, \{a, b\}, \{a, b, c\}\}$ which also has 8 elements in the set. 
+
+* The $2$ can be thought of as a binary choice, $\{Y, N\}$.
+
+<br/>
+
+### Types of Functions
+
+**Def**. A function $f: A \to B$ is *injective* (one-to-one) if
+
+$$\forall a, b \in A: a \ne b \implies f(a) \ne f(b)$$
+
+* This means, different elements of $A$ map to different elements of $B$. So there must be at least as many elements in $B$ as in $A$, or $|B| \ge |A|$.
+
+**Def**. A function $f: A \to B$ is *surjective* (onto) if
+
+$$\forall b in B, \exists a \in A : f(a) : f(a) = b$$
+
+* This is the same as $f(A) = B$, or every $b \in B$ is matched.
+* Unlike injectivity, two different $a \in A$ can map to the same $b \in B$. But every $b \in B$ must be matched, so we have $|A| \le |B|$.
+
+**Def**. A function $f : A \to B$ is *bijective* (one-to-one correspondence) if it is **both** injective, and surjective.
+
+* We have both $|A| \le |B|$ and $|A| \ge |B|$, so we have $|A| = |B|$.
 
 #### Equinumerous Sets
 
-**Definition:** Sets $A$ and $B$ are _equinumerous_, written $A \cong B$ if there exists a bijection $f : A \to B$.
+**Def**. Sets $A$ and $B$ are _equinumerous_, written $A \cong B$ if there exists a bijection $f : A \to B$.
 
 If $f$ is one-to-one (_injective_), there may still be elements in $B$ that are unmatched.
-**Fact:** For every one-to-one function $f : A \to B$, we have $A \cong f(A)$
+* **Fact:** For every one-to-one function $f : A \to B$, we have $A \cong f(A)$
 
 If $f$ is onto (_surjective_), there may still be elements in $A$ that are unmatched.
-**Fact:** For every onto function $f : A \to B$, there exists a subset $A' \subseteq A$ such that $A \cong B$,
-$A'$ consists of for each $b \in B$, only one $a \in A$ with $f(a) = b$.
+* **Fact:** For every onto function $f : A \to B$, there exists a subset $A' \subseteq A$ such that $A \cong B$, $A'$ consists of for each $b \in B$, only one $a \in A$ with $f(a) = b$.
 
-**Reflexive:** For every set $A$, $A \cong A$ (Use the identity function $f(a) = a$)
-**Symmetric:** If $A \cong B$, then $B \cong A$ (Use $f^{-1}$)
-**Transitive:** If $A \cong B$ and $B \cong C$, then $A \cong C$ (Use $f \circ g$)
+So if $f$ is bjective, all elements are matched one-to-one, so $|A| = |B|$. Equinumerosity means that $A$ and $B$ have the same *cardinality*.
 
-Equinumerous relations are not equivalence relations, as there is no set we are **ON**. (The set of all sets is impossible)
+**Theorem**. The equinumerosity relation is *reflexive*, *symmetric*, and *transitive*. 
+* **Reflexive:** For every set $A$, $A \cong A$ (Use the identity function $f(a) = a$
+* **Symmetric:** If $A \cong B$, then $B \cong A$ (Use $f^{-1}$)
+* **Transitive:** If $A \cong B$ and $B \cong C$, then $A \cong C$ (Use $f \circ g$)
 
-If $A, B, C \subseteq U$, where $U$ is the universal set,
-$2^U \setminus \cong$ is the set of all sets with a particular size (dividing by cardinality)
+**NOTE**. Equinumerosity is *not* an equivalence relation, as there is no set we are **ON**. (The set of all sets is impossible)
 
+However, equinumerosity ($\cong$) is an equivalence relation on a finite universal set.
+* $2^U \setminus \cong$ is the set of all sets with a particular size (dividing by cardinality)
 
-**Example:** The equinumerosity relation $\cong$ is an equivalence relation on $2^{\{a, b, c\}} = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{b, c\}, \{a, b, c\}\}$.
+**Example:** The equinumerosity relation $\cong$ is an equivalence relation on $2^{\{a, b, c\}}$:
 
-$\emptyset \cong \emptyset$, $\emptyset \ncong \{a, b\}$, $\{a\} \cong \{c\}$, …
+$$(2^{\{a, b, c\}} \setminus \cong) \space = \{\{\emptyset\}, \{\{a\}, \{b\}, \{c\}\}, \{\{a, b\}, \{b, c\}, \{a, b\}\}, \{\{a, b, c\}\}\}$$
 
-$(2^{\{a, b, c\}} \setminus \cong) \space = \{\{\emptyset\}, \{\{a\}, \{b\}, \{c\}\}, \{\{a, b\}, \{b, c\}, \{a, b\}\}, \{\{a, b, c\}\}\}$.
+<br/>
 
 ## 8. Cardinality of Sets
 
