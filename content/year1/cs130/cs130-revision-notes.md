@@ -1502,41 +1502,92 @@ This is a contradicition. $\square$
 	
 ## 9. Mathematical Induction
 
-$s(0) = 0$
-$s(n+1) = s(n) + (n+1)$
+### Example
 
-**Fact:** For all $n$, $s(n) = \frac{n(n+1)}{2}$
+**Theorem**. For all $n \in \mathbb{N}$, $s(n) = \frac{n(n+1)}{2}$
+
+<div class="proof">
+
 **Proof:**
-	_Base Case_: $s(0) = 0$ and $\frac{0 (0 + 1)}{2} = 0$
-	_Inductive Step_: 
-		Assume $s(n) = \frac{n(n+1)}{2}$ for some $n \ge 0$ --> Inductive Hypothesis
-		Consider $s(n+1) = s(n) + (n+1)$
-					  $= \frac{n(n+1)}{2} + (n+1)$
-					  $= \frac{n(n+1) + 2n + 2}{2}$
-					  $= \frac{n^2 + 3n + 2}{2}$
-					  $= \frac{(n+1)(n+2)}{2}$
-					  $= \frac{(n+1)((n+1) + 1)}{2}$
-**QED**
 
-**Principle of Induction**:
-	For any predicate $P$ on $\mathbb{N}$, if we have:
-	- $P(0)$ is true, and
-	- For all $n \in \mathbb{N}, P(n) \implies P(n+1)$.
-	Then we have that for all $n \in \mathbb{N}$, $P(n)$ is true
+<div class="proof-body">
+
+**Base Case**: $s(0) = 0$ and $\frac{0 (0 + 1)}{2} = 0$
+
+**Inductive Step**:
+
+<div class="proof-body">
+
+Assume $s(n) = \frac{n(n+1)}{2}$ for some $n \ge 0$
+
+$$
+\derivation{
+s(n+1)
+&= s(n) + (n+1) \\
+&= \frac{n(n+1)}{2} + (n+1) \\
+&= \frac{n(n+1) + 2n + 2}{2} \\
+&= \frac{n^2 + 3n + 2}{2} \\
+&= \frac{(n+1)(n+2)}{2} \\
+&= \frac{(n+1)((n+1) + 1)}{2} \\
+}
+$$
+
+</div>
+
+Therefore, the hypothesis holds for $s(n+1)$. $\square$
+
+</div>
+
+</div>
+
+<br/>
+
+### Principles of Induction
+
+<div class="proof">
+
+**Principle of weak induction**:
+
+<div class="proof-body">
+
+For any predicate $P$ on $\mathbb{N}$, if we have:
+* $P(0)$ is true, and
+* For all $n \in \mathbb{N}, P(n) \implies P(n+1)$.
+
+Then we have that for all $n \in \mathbb{N}$, $P(n)$ is true
+
+</div>
+
+</div>
+
+<div class="proof">
 
 **Big Fact:**
-Every non-empty set $X \subseteq N$ has a smallest element.
+* Every non-empty set $X \subseteq N$ has a smallest element.
 
-### Induction
+</div>
 
-**Principle of Induction 1:**
-If $P(0)$ and $P(n) \implies P(n+1)$ for all $n \in \mathbb{N}$, then $P(n)$ for all $n \in \mathbb{N}$.
+<div class="proof">
 
-**Big Fact:**
-Every non-empty $X \in \mathbb{N}$ has a smallest element.
+**Principle of strong induction**:
 
-**Principle of Induction 2:**
-If $(\forall m < n : P(m)) \implies P(n) \implies P(n)$ for all $n \in \mathbb{N}$, then $P(n)$ for all $n \in \mathbb{N}$.
+<div class="proof-body">
+
+For any predicate $P$ on $\mathbb{N}$,
+* If $(\forall m < n : P(m)) \implies P(n)$ for all $n \in \mathbb{N}$
+* Then $P(n)$ for all $n \in \mathbb{N}$.
+
+</div>
+
+</div>
+
+**Fact**. All three of the above are equivalent.
+
+**Analogy**.
+* *weak induction* is saying if $k$ holds, then $k+1$ holds (climbing a ladder)
+* *strong induction* is saying if $0...k$ holds, then $k+1$ holds. It allows us to use a stronger assumption.
+
+<br/>
 
 ## 10. Graphs
 
