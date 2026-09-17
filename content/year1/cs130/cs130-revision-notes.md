@@ -1897,55 +1897,120 @@ $$(p_1, p_2) \preccurlyeq_{\text{lex}}(p_1',p_2') \iff p_1\preccurlyeq_1p_1'\lor
 
 ## 12. Trees
 
-**In this section, we work with undirected simple graphs**
+*In this section, we work with undirected simple graphs*
 
-#### Lemmas about Graphs
+### Lemmas about Graphs
 
-**Lemma 1**: In any connected graph, removing an edge from a cycle keeps the graph connected.
+**Lemma 1**. In any connected graph, removing an edge from a cycle keeps the graph connected.
 
-**Proof:** 
-	Consider removing from a cycle $\kappa$ an edge $e$. 
-	Suppose $v, w$ are vertices in the graph $G$.
-	Let $\omega$ be a walk $v \to^*w$ in the original graph $G$. 
-	If $\omega$ does not contain $e$, $\omega$ is a walk in the new graph $G' = G \setminus \{e\}$.
-	Otherwise, let $\omega'$ be the walk obtained from $\omega$ by replacing every occurrence of $e$ in $\omega$ by a walk obtained from the cycle $\kappa$ by removing $e$.
-	Then, $\omega'$ is a walk $v \to^* w$ in $G'$.
-**End**
-
-**Lemma 2:** In any connected graph, adding a _new_ edge introduces a cycle.
+<div class="proof">
 
 **Proof:** 
-	Suppose a new edge is $\{u,v\}$. 
-	Since the graph was connected, there is a walk $\omega = u \to^*v$ in the original graph. 
-	Then adding $\{u, v\}$ to the end of $\omega$ creates a tour.
-	We obtain a cycle by repeatedly shortening the tour to eliminate repetitions of edges.
-**End**
 
-**Lemma 3**: Let $n$ be the number of connected components. (a) $n \ge |V| - |E|$, and (b) if the graph is acyclic, then $n = |V| - |E|$.
+<div class="proof-body">
+
+Consider removing from a cycle $\kappa$ an edge $e$. 
+
+Suppose $v, w$ are vertices in the graph $G$.
+
+Let $\omega$ be a walk $v \to^*w$ in the original graph $G$. 
+
+If $\omega$ does not contain $e$, $\omega$ is a walk in the new graph $G' = G \setminus \{e\}$.
+
+Otherwise, let $\omega'$ be the walk obtained from $\omega$ by replacing every occurrence of $e$ in $\omega$ by a walk obtained from the cycle $\kappa$ by removing $e$.
+
+Then, $\omega'$ is a walk $v \to^* w$ in $G'$. $\square$
+
+</div>
+
+</div>
+
+**Lemma 2**. In any connected graph, adding a _new_ edge introduces a cycle.
+
+<div class="proof">
+
+**Proof:** 
+
+<div class="proof-body">
+
+Suppose a new edge is $\{u,v\}$. 
+
+Since the graph was connected, there is a walk $\omega = u \to^*v$ in the original graph. 
+
+Then adding $\{u, v\}$ to the end of $\omega$ creates a tour.
+
+We obtain a cycle by repeatedly shortening the tour to eliminate repetitions of edges. $\square$
+
+</div>
+
+</div>
+
+**Lemma 3**. Let $n$ be the number of connected components. (a) $n \ge |V| - |E|$, and (b) if the graph is acyclic, then $n = |V| - |E|$.
+
+<div class="proof">
 
 **Proof:** (by induction on $|E|$)
-	**Base Case:** Here $|E| = 0$, so $n = |V| = |V| - |E|$
-	**Inductive Step:**
-		Consider adding an edge $e$ to a graph $G = (V,E)$.
-		**Case $(*)$** - Edge $e$ is within a connected component of $G$. 
-			Then $n$ in the new graph is the same as in $G$. Also by Lemma 2, (b) does not apply.
-		Case $(**)$ - Edge $e$ is between two connected components of $G$.
-			Then $n$ in the new graph is one less than in $G$. By the inductive hypothesis and the fact that $|V| - (|E| + 1) = |V| - |E| - 1$, we have (a) and (b).
-**End**
+
+<div class="proof-body">
+
+**Base Case:** Here $|E| = 0$, so $n = |V| = |V| - |E|$
+
+**Inductive Step:** Consider adding an edge $e$ to a graph $G = (V,E)$.
+
+**Case $(*)$** - Edge $e$ is within a connected component of $G$. 
+
+<div class="proof-body">
+
+Then $n$ in the new graph is the same as in $G$. Also by Lemma 2, (b) does not apply.
+
+</div>
+
+**Case** $(**)$ - Edge $e$ is between two connected components of $G$.
+
+<div class="proof-body">
+
+Then $n$ in the new graph is one less than in $G$. By the inductive hypothesis and the fact that $|V| - (|E| + 1) = |V| - |E| - 1$, we have (a) and (b).
+
+</div>
+
+Both cases hold, so the inductive step holds. $\square$
+
+</div>
+
+</div>
 		
-#### Spanning Tree
+### Spanning Tree
 
-For a graph $G = (V,E)$, a **spanning tree** is a subgraph $T = (V', E')$ such that $V = V'$ and $T$ is a tree (connected, acyclic graph)
+**Def**. For a graph $G = (V,E)$, a **spanning tree** is a subgraph $T = (V', E')$ such that $V = V'$ and $T$ is a tree (connected, acyclic graph)
 
-**Theorem 1:** Every connected graph has a spanning tree.
+**Theorem**. Every connected graph has a spanning tree.
+
+<div class="proof">
+
 **Proof:** (by induction on $|E|$, and by Lemma 1)
-	If $G$ is a tree, we are done.
-	Otherwise, $G$ must contain a cycle.
-		By Lemma 1, we can remove an edge and it would be connected.
-		By induction, $G'$ would contain a spanning tree.
 
-#### Five Definitions of Trees TFAE
-- TFAE = "the following are equivalent"
+<div class="proof-body">
+
+If $G$ is a tree, we are done.
+
+Otherwise, $G$ must contain a cycle.
+
+<div class="proof-body">
+
+By Lemma 1, we can remove an edge and it would be connected.
+
+By induction, $G'$ would contain a spanning tree.
+
+</div>
+
+</div>
+
+</div>
+
+
+### Five Definitions of Trees TFAE
+
+**Theorem**. The following statements are equivalent:
 
 1. $G = (V,E)$ is a tree
 2. $G$ is acyclic and $|V| - |E| = 1$
@@ -1953,24 +2018,81 @@ For a graph $G = (V,E)$, a **spanning tree** is a subgraph $T = (V', E')$ such t
 4. $G$ is connected and removing an edge makes it disconnected
 5. $G$ is acyclic and inserting an edge introduces a cycle
 
+<div class="proof">
+
 **Proof:** (by the cycle method)
 
-$(1) \implies (2)$:
-	$G$ is acyclic because it is a tree.
-	It is connected for the same reason, so $|V| - |E| = 1$ by Lemma 3(b)
-$(2) \implies (3)$:
-	Since $G$ is acyclic, and $|V| - |E| = 1$, by Lemma 3(b), we have that the number of connected components is 1, i.e. $G$ is connected.
-$(3) \implies (4)$:
-	Let $G'=(V,E')$ be obtained from $G$ by removing an edge.
-	By Lemma 3(a), the number of connected components $\ge |V| - (|E| - 1) = |V| - |E| + 1$
-$(4) \implies (5)$:
-	$G$ is acyclic by Lemma 1.
-	Inserting any edge introduces a cycle by Lemma 2.
-$(5) \implies (1)$:
-	Assume for a contradiction that $G$ is disconnected.
-	Then we can insert an edge that does not introduce a cycle
-	This contradicts the second part of $(5)$
-	So $G$ is connected, thus a tree.
+<div class="proof-body">
+
+**Implication $(1) \implies (2)$**:
+
+<div class="proof-body">
+
+$G$ is acyclic because it is a tree.
+
+It is connected for the same reason, so $|V| - |E| = 1$ by Lemma 3(b). $\square$
+
+</div>
+
+<br/>
+
+**Implication $(2) \implies (3)$**:
+
+<div class="proof-body">
+
+Since $G$ is acyclic, and $|V| - |E| = 1$, by Lemma 3(b), we have that the number of connected components is 1, i.e. $G$ is connected. $\square$
+
+</div>
+
+<br/>
+
+**Implication $(3) \implies (4)$**:
+
+<div class="proof-body">
+
+Let $G'=(V,E')$ be obtained from $G$ by removing an edge.
+
+By Lemma 3(a), the number of connected components $\ge |V| - (|E| - 1) = |V| - |E| + 1$ $\square$.
+
+</div>
+
+<br/>
+
+**Implication $(4) \implies (5)$**:
+
+<div class="proof-body">
+
+$G$ is acyclic by Lemma 1.
+
+Inserting any edge introduces a cycle by Lemma 2. $\square$
+
+</div>
+
+<br/>
+
+**Implication $(5) \implies (1)$**:
+
+<div class="proof-body">
+
+Assume for a contradiction that $G$ is disconnected.
+
+Then we can insert an edge that does not introduce a cycle
+
+This contradicts the second part of $(5)$
+
+So $G$ is connected, thus a tree. $\square$
+
+</div>
+
+<br/>
+
+We formed a closed cycle of implications, so all 5 statements must be equivalent. $\square$
+
+</div>
+
+</div>
+
+<br/>
 
 ## 13. Probability
 	
