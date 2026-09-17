@@ -59,9 +59,9 @@ node scripts/update-dir-structure.js
 
 ### GitHub Pages deployment
 
-Generated pages in `notes/` and the generated `structure.json` are ignored by Git. A push to `main` runs `.github/workflows/pages.yml`, which performs a clean build and deploys the resulting site as a GitHub Pages artifact. The workflow can also be started manually from the repository's **Actions** tab.
+Generated pages in `notes/` and the generated `structure.json` are ignored by Git. A pull request targeting `main` runs `.github/workflows/pages.yml` to clean and build the site. The build result appears as the `build` check on the PR, and the `pr-site` artifact can be downloaded from the workflow run. PRs do not deploy. A push to `main` runs the same build and deploys the resulting site as a GitHub Pages artifact. The workflow can also be started manually from the repository's **Actions** tab.
 
-In the GitHub repository settings, set **Pages > Build and deployment > Source** to **GitHub Actions**. Build and deployment results are shown in the repository's **Actions** tab.
+In the GitHub repository settings, set **Pages > Build and deployment > Source** to **GitHub Actions**. Build and deployment results are shown in the repository's **Actions** tab. To require the build before merging, add the `build` job as a required status check in the protection rules for `main`.
 
 ### Adding a markdown file
 
