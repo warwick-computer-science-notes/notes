@@ -2096,9 +2096,9 @@ We formed a closed cycle of implications, so all 5 statements must be equivalent
 
 ## 13. Probability
 	
-#### Introduction to Probability
+### Introduction to Probability
 
-**Probability Space:** $(\Omega,2^\Omega, P)$
+**Def**. A *probability space* is denoted $(\Omega,2^\Omega, P)$, where
 - $\Omega$ = samples
 - $2^\Omega$ = power set of samples = events
 - $P$ = probability function, where $P : 2^\Omega \to \mathbb{R}$
@@ -2118,102 +2118,188 @@ We formed a closed cycle of implications, so all 5 statements must be equivalent
 #### Claims and Theorems about Probability
 
 **Claim 1**: $P(\emptyset) = 0$
+
+<div class="proof">
+
 **Proof:**
-	$P(\Omega) = P(\Omega \cup \emptyset)$
-	$P(\Omega) = P(\Omega) + P(\emptyset)$
-	$\therefore P(\emptyset) = 0$
-**End**
+
+<div class="proof-body">
+
+$$
+\derivation{
+P(\Omega)
+&= P(\Omega \cup \emptyset) \\
+&= P(\Omega) + P(\emptyset) \\
+}
+$$
+
+<div class="math-left">
+
+$$\text{So, } P(\emptyset) = 0 \space \space \square$$
+
+</div>
+
+</div>
+
+</div>
 
 **Claim 2:** $P(\bar{E}) = 1 - P(E), \forall E \subseteq \Omega$ where $\bar{E} = \Omega \setminus E$
+
+<div class="proof">
+
 **Proof:** 
-	$P(E \cup \bar{E}) = P(\Omega)$
-	$P(E) + P(\bar{E}) = 1$
-	$\therefore P(\bar{E}) = 1 - P(E)$
+
+<div class="proof-body">
+
+<div class="math-left">
+
+$$P(E \cup \bar{E}) = P(\Omega)$$
+
+$$P(E) + P(\bar{E}) = 1$$
+
+$$P(\bar{E}) = 1 - P(E) \space \space \square$$
+
+</div>
+
+</div>
+
+</div>
 
 **Claim 3:** $P(E \cup F) = P(E) + P(F) - P(E \cap F)$
+
+<div class="proof">
+
 **Proof:** 
-	$P(E \cup F) = P(E \cup (F \setminus E))$
-	$= P(E) + P(F \setminus E)$
-	$= P(E \setminus F) + P(E \cap F) + P(F \setminus E)$
-	$= [P(E \setminus F) + P(E \cap F)] + [P(F \setminus E) + P(E \cap F)] - P(E \cap F)$
-	$= P(E) + P(F) - P(E \cap F)$
+
+<div class="proof-body">
+
+$$
+\derivation{
+P(E \cup F)
+&= P(E \cup (F \setminus E)) \\
+&= P(E) + P(F \setminus E) \\
+&= P(E \setminus F) + P(E \cap F) + P(F \setminus E) \\
+&= [P(E \setminus F) + P(E \cap F)] + [P(F \setminus E) + P(E \cap F)] - P(E \cap F) \\
+&= P(E) + P(F) - P(E \cap F) \space \space \square \\
+}
+$$
+
+</div>
+
+</div>
 
 **Theorem:** $P(E \cup F) \le P(E) + P(F)$
-**Proof:** By claim 3 and axiom 1
 
-#### Conditional Probability
+<div class="proof">
 
-**Suppose** $P(B) > 0$
+**Proof:**
+
+<div class="proof-body">
+
+By claim 3 and axiom 1. $\square$
+
+</div>
+
+</div>
+
+### Conditional Probability
+
+**Def**. Suppose $P(B) > 0$, then the *conditional probability* of $A$ *given* $B$ is
+
 $$P(A|B) := \frac{P(A \cap B)}{P(B)}$$
+
 **Example:**
-	$\Omega = \{1,2,3,4,5,6\}$
-	$P(E) = \frac{|E|}{6}$
-	$A = \{1,2,3,4,5\}$ "not 6"
-	$B$ = $\{2,4,6\}$ "even"
-	$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(\{2,4\})}{P(\{2,4,6\})} = \frac{\frac{2}{6}}{\frac{3}{6}} = \frac{2}{3}$
-	$P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(\{2,4\})}{P(\{1,2,3,4,5\})} = \frac{\frac{2}{6}}{\frac{5}{6}} = \frac{2}{5}$
-	"Prosecutors Fallacy" - $P(A|B) \ne P(B|A)$ in general.
+- $\Omega = \{1,2,3,4,5,6\}$
+- $P(E) = \frac{|E|}{6}$
+- $A = \{1,2,3,4,5\}$ "not 6"
+- $B$ = $\{2,4,6\}$ "even"
+- $P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(\{2,4\})}{P(\{2,4,6\})} = \frac{\frac{2}{6}}{\frac{3}{6}} = \frac{2}{3}$
+- $P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(\{2,4\})}{P(\{1,2,3,4,5\})} = \frac{\frac{2}{6}}{\frac{5}{6}} = \frac{2}{5}$
+- "Prosecutors Fallacy" - $P(A|B) \ne P(B|A)$ in general.
 
 #### Law of Total Probability
 
-Suppose $B_1, B_2, ... , B_n$ disjointly partition $\Omega$ and $P(B_i) > 0, \forall i$.
+**Theorem (law of total probability)**: Suppose $B_1, B_2, ... , B_n$ disjointly partition $\Omega$ and $P(B_i) > 0, \forall i$.
+
 For all events $A$:
+
 $$P(A) = \sum_{i=1}^n{P(A|B_i)P(B_i)}$$
+
+<div class="proof">
+
 **Proof:**
-	$P(A) = \sum_{i=1}^n{P(A \cap B_i)}$
-	$= P(A \cap B_1 \cup A \cap B-2 \cup \dots \cup A \cap B_n)$
-	= $P(A \cap (B_1 \cup B_2 \cup \dots \cup B_n))$
-	$= P(A \cap \Omega)$
-	$= P(A)$
+
+$$
+\derivation{
+\text{RHS}
+&= \sum_{i=1}^n P(A|B_i)P(B_i) \\
+&= \sum_{i=1}^n{P(A \cap B_i)} \\
+&= P(A \cap B_1 \cup A \cap B_2 \cup \dots \cup A \cap B_n) \\
+&= P(A \cap (B_1 \cup B_2 \cup \dots \cup B_n)) \\
+&= P(A \cap \Omega) \\
+&= P(A) \space \space \square \\
+}
+$$
+
+</div>
 
 **Example**: "Zoggles"
-	$\Omega$ = the set of all zoggles.
-	$F_1$ = the zoggles made in factory 1
-	$F_2$ = the zoggles made in factory 2
-	$X$ = the set of all faulty zoggles
-	$P(F_1) = 2P(F_2)$
-		We know that $P(F_1) + P(F_2) = 1$
-		$\therefore P(F_1) = \frac{2}{3}, P(F_2) = \frac{1}{3}$
-	**Given:** $P(X|F_1) = 0.2$, $P(X|F_2) = 0.05$
-	$P(X) = P(X|F_1)P(F_1) + P(X|F_2)P(F_2)$
-	$= \frac{1}{5}\times\frac{2}{3}+\frac{1}{20}\times\frac{1}{3}$
-	$=\frac{2}{15} + \frac{1}{60} = \frac{9}{60} = \frac{3}{20} = 0.15$
+- $\Omega$ = the set of all zoggles.
+- $F_1$ = the zoggles made in factory 1
+- $F_2$ = the zoggles made in factory 2
+- $X$ = the set of all faulty zoggles
+- $P(F_1) = 2P(F_2)$
+	* We know that $P(F_1) + P(F_2) = 1$
+	* $\therefore P(F_1) = \frac{2}{3}, P(F_2) = \frac{1}{3}$
+- **Given:** $P(X|F_1) = 0.2$, $P(X|F_2) = 0.05$
+	* $P(X) = P(X|F_1)P(F_1) + P(X|F_2)P(F_2)$
+	* $= \frac{1}{5}\times\frac{2}{3}+\frac{1}{20}\times\frac{1}{3}$
+	* $=\frac{2}{15} + \frac{1}{60} = \frac{9}{60} = \frac{3}{20} = 0.15$
 	
 #### Bayes' Rule
 
-Assume $P(A) > 0$
+**Theorem (Bayes)**. Assume $P(A) > 0$, then we have
+
 $$P(B_i|A) = \frac{P(B_i \cap A)}{P(A)} = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^n{P(A|B_j)P(B_j)}}$$
-$P(B_i|A)$ is the posterior
-$P(B_i)$ is the prior
+
+where $P(B_i|A)$ is the *posterior* and $P(B_i)$ is the *prior*
 
 **Example:**
-	$D$ is the event of having a disease
-	$T$ is the event of being tested positive for a disease
-	$P(D) = 0.001$
-	$P(T|D) = 0.9$
-	$P(T|\bar{D}) = 0.01$
-	Calculate $P(D|T)$
-	$$= \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|\bar{D})P(\bar{D})}$$
-	$$= \frac{0.9 \times 0.001}{0.9 \times 0.001 + 0.01 \times 0.999}$$
-	$$ = \frac{90}{1089}$$
+* $D$ is the event of having a disease
+* $T$ is the event of being tested positive for a disease
+* $P(D) = 0.001$
+* $P(T|D) = 0.9$
+* $P(T|\bar{D}) = 0.01$
+
+**Calculate** $P(D|T)$:
+
+$$
+\derivation{
+P(D|T)
+&= \frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|\bar{D})P(\bar{D})} \\
+&= \frac{0.9 \times 0.001}{0.9 \times 0.001 + 0.01 \times 0.999} \\
+&= \frac{90}{1089} \\
+}
+$$
 
 #### Independent Events
 
-Events $A$ and $B$ are **independent** if $P(A \cap B) = P(A)P(B)$
-So $P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)$
+**Def**. Events $A$ and $B$ are **independent** if $P(A \cap B) = P(A)P(B)$
+
+A way to think of it, is that knowing $B$ does not influence $A$, or
+
+$$P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A)$$
 
 **Example**:
-	$\Omega = \{1,2,3,4,5,6\}$
-	$A = \{1,2,3,4,5\}$ "not 6"
-	$B = \{2,4,6\}$
-	$P(A) = \frac{5}{6}, P(B) = \frac{1}{2}$
-	$P(A \cap B) = P(\{2,4\}) = \frac{2}{6} = \frac{1}{3}$
-	$P(A)P(B) = \frac{5}{6}\times\frac{1}{2} = \frac{5}{12} \ne \frac{1}{3}$
-	Hence $A,B$ are not independent.
- 	$E$ = $\{1, 2\}$ "< 3"
-	$P(E) = \frac{2}{6} = \frac{1}{3}$
-	$P(B \cap E) = P(\{2\}) = \frac{1}{6}$
-	$P(B)P(E) = \frac{1}{2} \times \frac{1}{3} = \frac{1}{6}$
-	Hence $E, B$ are independent.
-
-
+- $\Omega = \{1,2,3,4,5,6\}$
+- $A = \{1,2,3,4,5\}$ "not 6"
+- $B = \{2,4,6\}$
+- $P(A) = \frac{5}{6}, P(B) = \frac{1}{2}$
+- $P(A \cap B) = P(\{2,4\}) = \frac{2}{6} = \frac{1}{3}$
+- $P(A)P(B) = \frac{5}{6}\times\frac{1}{2} = \frac{5}{12} \ne \frac{1}{3}$
+- Hence $A,B$ are not independent.
+- $E$ = $\{1, 2\}$ "< 3"
+- $P(E) = \frac{2}{6} = \frac{1}{3}$
+- $P(B \cap E) = P(\{2\}) = \frac{1}{6}$
+- $P(B)P(E) = \frac{1}{2} \times \frac{1}{3} = \frac{1}{6}$
+- Hence $E, B$ are independent.
