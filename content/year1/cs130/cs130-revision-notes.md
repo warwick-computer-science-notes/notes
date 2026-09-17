@@ -1831,22 +1831,28 @@ $$|V| - |E| = 1$$
 
 ## 11. Partial Orders
 
-#### Introduction to Posets
+### Introduction to Posets
 
-- A **poset** is a set $X$ with a relation $\preccurlyeq : X \leftrightarrow X$ which is reflexive, antisymmetric and transitive.
-	- Reflexive: $\forall x : x \preccurlyeq x$
-	- Anti-symmetric: $\forall x, y : x \preccurlyeq y \land y \preccurlyeq x \implies x = y$
-	- Transitive: $\forall x, y, z : x \preccurlyeq \land y \preccurlyeq z \implies x \preccurlyeq z$
+**Def**. A **poset** is a set $X$ with a relation $\preccurlyeq : X \leftrightarrow X$ which is reflexive, antisymmetric and transitive.
+- Reflexive: $\forall x : x \preccurlyeq x$
+- Anti-symmetric: $\forall x, y : x \preccurlyeq y \land y \preccurlyeq x \implies x = y$
+- Transitive: $\forall x, y, z : x \preccurlyeq \land y \preccurlyeq z \implies x \preccurlyeq z$
 
-- An element $x$ is **maximal** if there is no other element $y \in X$ such that $x \preccurlyeq y$.
-	- There can be multiple maximal elements
-- An element $x$ is the **greatest** if $\forall y : X: y \preccurlyeq x$.
-- An element $x$ is **minimal** if there is no other element $y \in X$ such that $y \preccurlyeq x$.
-	- There can be multiple minimal elements
-- An element $y$ is the **least** if $\forall y : X : x \preccurlyeq y$
-- Two elements $x, y$ are **incomparable** when $x \not\preccurlyeq y \land y \not\preccurlyeq x$
-- Notation: $x < y$ if $x \preccurlyeq y \land x \ne y$
-- Notation: $x <\cdot y$ means "x is covered by y", if $x < y \land \neg\exists z : x < z \land z < y$
+**Def**. An element $x$ is **maximal** if there is no other element $y \in X$ such that $x \preccurlyeq y$.
+- There can be multiple maximal elements
+
+**Def**. An element $x$ is the **greatest** if $\forall y : X: y \preccurlyeq x$.
+
+**Def**. An element $x$ is **minimal** if there is no other element $y \in X$ such that $y \preccurlyeq x$.
+- There can be multiple minimal elements
+
+**Def**. An element $y$ is the **least** if $\forall y : X : x \preccurlyeq y$
+
+**Def**. Two elements $x, y$ are **incomparable** when $x \not\preccurlyeq y \land y \not\preccurlyeq x$
+
+**Notation**:
+- We write $x < y$ if $x \preccurlyeq y \land x \ne y$
+- We write $x <\cdot y$ means "x is covered by y", if $x < y \land \neg\exists z : x < z \land z < y$
 
 #### Examples of Posets
 
@@ -1872,20 +1878,22 @@ $$(2^{\{a,b,c\}}\setminus\{\{a,b,c\}\}, \subseteq)$$
 Suppose we have two posets $(p_1, \preccurlyeq_1), (p_2, \preccurlyeq_2)$
 
 Product Partial Order:
-$$(p_1, p_2) \preccurlyeq_{pr} (p_1', p_2') \iff p_1 \preccurlyeq_1 p_1' \land p_2 \preccurlyeq_2 p_2'$$
+$$(p_1, p_2) \preccurlyeq_{\text{pr}} (p_1', p_2') \iff p_1 \preccurlyeq_1 p_1' \land p_2 \preccurlyeq_2 p_2'$$
 Lexicographical Partial Order:
-$$(p_1, p_2) \preccurlyeq_{lex}(p_1',p_2') \iff p_1\preccurlyeq_1p_1'\lor(p_1=p_1'\land p_2\preccurlyeq_2p_2')$$
+$$(p_1, p_2) \preccurlyeq_{\text{lex}}(p_1',p_2') \iff p_1\preccurlyeq_1p_1'\lor(p_1=p_1'\land p_2\preccurlyeq_2p_2')$$
 
-*Note that the Lexicographical Ordering preserves Total Ordering (if $\preccurlyeq_1, \preccurlyeq_2$ are total orders, then $\preccurlyeq_{lex}$ is a total order)*
+*Note that the Lexicographical Ordering preserves Total Ordering (if $\preccurlyeq_1, \preccurlyeq_2$ are total orders, then $\preccurlyeq_{\text{lex}}$ is a total order)*
 
 **Note that:**
-- $(\{0,1\}^n, \preccurlyeq_{pr})$ is the same as the power set partial order
-- $(\{0,1\}^n, \preccurlyeq_{lex})$ is the order of n-digit binary numbers
+- $(\{0,1\}^n, \preccurlyeq_{\text{pr}})$ is the same as the power set partial order
+- $(\{0,1\}^n, \preccurlyeq_{\text{lex}})$ is the order of n-digit binary numbers
 
 #### Total Ordering
 
-- A relation is a **total order** if it is a partial order and there are no incomparable elements
-	- For all $a, b \in X$, either $a \preccurlyeq b$ or $b \preccurlyeq a$.
+**Def**. A relation is a **total order** if it is a partial order and there are no incomparable elements
+- For all $a, b \in X$, either $a \preccurlyeq b$ or $b \preccurlyeq a$.
+
+<br/>
 
 ## 12. Trees
 
