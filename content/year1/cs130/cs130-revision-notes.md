@@ -1591,60 +1591,82 @@ For any predicate $P$ on $\mathbb{N}$,
 
 ## 10. Graphs
 
-#### Introduction to Graphs
+### Introduction to Graphs
 
-**Definition:** A graph $G$ consists of a non-empty finite set of vertices $V$ and a collection of edges $E$.
+**Def**. A graph $G$ consists of a non-empty finite set of vertices $V$ and a collection of edges $E$.
 - Directed graph: edges are ordered pairs - $(u, v)$ for $u, v \in V$.
 - Undirected graph: edges are sets - $\{u, v\}$ for $u, v \in V$.
 - A collection is a set that allows duplicates (but is still unordered)
 - With parallel (or multiple) edges: bag of edges
 - Without parallel edges: set of edges
 
-$u \to v$ means $(u, v) \in E$.
-- $u$ and $v$ are *adjacent*.
+**Def**. $u \to v$ means $(u, v) \in E$.
+- We say $u$ and $v$ are *adjacent*.
 - $u$ and $v$ are the *endpoints* of the edge.
 - In directed graphs, $u$ is the _source_ and $v$ is the _target_ or _destination_.
 - The edge $u \to v$ is _incident_ on $u$ and on $v$.
 
-A _loop_ or _self-loop_ is an edge $u \to u$.
+**Def**. A _loop_ or _self-loop_ is an edge $u \to u$.
 
-**Definition:** The _degree_ of a vertex $v$ is the number of edges incident on $v$, with each loop counted twice. In directed graphs, $\deg(v) = \deg_{in}(v) + \deg_{out}(v)$, where $\deg_{in}$ is the number of incoming incident edges, and $\deg_{out}$ is the number of outgoing incident edges.
+**Def**. The _degree_ of a vertex $v$ is the number of edges incident on $v$, with each loop counted twice. In directed graphs, $\deg(v) = \deg_{in}(v) + \deg_{out}(v)$, where $\deg_{in}$ is the number of incoming incident edges, and $\deg_{out}$ is the number of outgoing incident edges.
 
-**Theorem** (_The Handshake Lemma_):    $\sum_{v \in V} deg(v) = 2|E|$.
+**Theorem (The Handshake Lemma)**.
+$$\sum_{v \in V} \deg(v) = 2|E|$$
+
+<div class="proof">
+
 **Proof:**
-	In the sum $\sum_{v \in V} \deg(v)$, each edge is counted twice, once for each of its two endpoints.
-**QED**
 
-**Definition:** An _isomorphism_ between graphs $(V, E)$ and $(V', E')$ is a bijection $f : V \to V'$ such that $\forall u, v \in V : (u, v) \in E \iff (f(u), f(v)) \in E'$.
+<div class="proof-body">
 
-Up to _isomorphism_, for any $n \ge 1$, there is a unique _simple_ undirected graph on $n$ vertices with $n\choose2$ $= \frac{n(n-1)}{2}$ edges.
+In the sum $\sum_{v \in V} \deg(v)$, each edge is counted twice, once for each of its two endpoints. $\square$
 
-**Definition:** A graph is _simple_ if it has no parallel edges and no loops.
+</div>
 
-$K_n$ is the _complete_ simple undirected graph on $n$ vertices
-(the word _the_ means "up the isomorphism")
+</div>
 
 #### Graph Isomorphisms
 
-![[Pasted image 20250415173138.png]]
+![isomorphism](../../Images/Pasted_image_20250415173138.png)
 
-**Definition of Isomorphism:**
-- There exists a function $f :V \to V'$ such that $\forall u, v \in V : (u,v) \in E \iff (f(u), f(v)) \in E'$
+**Def**. An _isomorphism_ between graphs $(V, E)$ and $(V', E')$ is a bijection $f : V \to V'$ such that $\forall u, v \in V : (u, v) \in E \iff (f(u), f(v)) \in E'$.
 
-![[Pasted image 20250415173354.png]]
+**Definition:** A graph is _simple_ if it has no parallel edges and no loops.
+
+Up to _isomorphism_, for any $n \ge 1$, there is a unique _simple_ undirected graph on $n$ vertices with $n\choose2$ $= \frac{n(n-1)}{2}$ edges.
+
+This is $K_n$, the _complete_ simple undirected graph on $n$ vertices
+(the word _the_ means "up the isomorphism")
+
+![not isomorphic](../../Images/Pasted_image_20250415173354.png)
 
 **Example:** *the two graphs above are not isomorphic.*
-**Proof:** (by contradiction)
-	Suppose $f : \{1, 2, 3, 4\} \to \{a, b, c, d\}$ is an isomorphism.
-	For some $V \in \{1, 2, 3, 4\}$, we have $f(v) = a$
-	Let $V' \ne V$ such that $(V, V')$ is an edge in the first graph.
-	Then $f(V')$ must be an edge in the second graph.
-	But there is no edge incident on $a$.
-	This is a contradiction!
-	$\therefore$ The two graphs are not isomorphic.
-**QED**
 
-#### Graph Terminology, Reachability
+<div class="proof">
+
+**Proof:** (by contradiction)
+
+<div class="proof-body">
+
+Suppose $f : \{1, 2, 3, 4\} \to \{a, b, c, d\}$ is an isomorphism.
+
+For some $V \in \{1, 2, 3, 4\}$, we have $f(v) = a$
+
+Let $V' \ne V$ such that $(V, V')$ is an edge in the first graph.
+
+Then $f(V')$ must be an edge in the second graph.
+
+But there is no edge incident on $a$.
+
+This is a contradiction!
+
+$\therefore$ The two graphs are not isomorphic. $\square$
+
+</div>
+
+</div>
+
+### Graph Terminology and Reachability
 
 In a graph $G = (V,E)$:
 - A **walk** is a sequence $(v_0,v_1), (v_1,v_2),\dots,(v_{n-1},v_n)$ such that $v_0, v_1, ..., v_n \in V$, and $(v_0,v_1), (v_1,v_2), \dots, (v_{n-1}, v_n) \in E$. The walk is of length $n$.
@@ -1655,80 +1677,157 @@ In a graph $G = (V,E)$:
 - A **simple cycle** is a cycle without repetitions of vertices, except $v_0 = v_n$.
 
 **Reachability Relation**
-- $u \to*v$ means there is a **walk** from $u$ to $v$.
+- $u \to^*v$ means there is a **walk** from $u$ to $v$.
 - **Fact:** If there is a walk $u \to*v$ then there is a path $u \to^*v$.
 
 **Proposition:** If $u \ne v$ and $u \to^*v$ then there exists a simple path  from $u$ to $v$.
 
+<div class="proof">
+
 **Proof** (by contradiction):
-	Assume $u \to^*v$ and there does not exist a simple path
-	There must be a shortest walk
-	But there are no simple paths, so we can cut out a segment of a shortest walk to get an even shorter walk
-	This is a contradiction!
+
+<div class="proof-body">
+
+Assume $u \to^*v$ and there does not exist a simple path
+
+There must be a shortest walk
+
+But there are no simple paths, so we can cut out a segment of a shortest walk to get an even shorter walk
+
+This is a contradiction!
+
+</div>
+
+</div>
 
 **Theorem:** On the vertices $V$ of any undirected graph $(V,E)$, the reachability relation $\to^*$ is an equivalence relation.
 
+<div class="proof">
+
 **Proof:**
-	**Reflexive** - $a \to^*a$, as this is a walk of length 0
-	**Symmetry** - $a\to^*b \implies b\to^*a$
-	**Transitive** - Concatenate walks
 
-#### Eulerian Cycles
+<div class="proof-body">
 
-A cycle is **Eulerian** if it contains every edge in the graph (necessarily exactly one because it is a cycle)
+**Reflexive** - $a \to^*a$, as this is a walk of length 0
 
-**Euler-Hierholzer Theorem**: An undirected graph without isolated vertices has an *Eulerian cycle* iff it is connected and every vertex has even degree.
+**Symmetry** - $a\to^*b \implies b\to^*a$
+
+**Transitive** - Concatenate walks
+
+</div>
+
+</div>
+
+### Eulerian Cycles
+
+**Def**. A cycle is **Eulerian** if it contains every edge in the graph (necessarily exactly one because it is a cycle)
+
+**Theorem (Euler-Hierholzer)**: An undirected graph without isolated vertices has an *Eulerian cycle* iff it is connected and every vertex has even degree.
+
+<div class="proof">
+
+**Proof**
+
+<div class="proof-body">
+
+**Forwards direction:**
+
+<div class="proof-body">
 	
-**Proof (_forwards_) direction:**
-	Suppose $v_0 \to v_1 \to \dots \to v_k = v_n$ is a an Eulerian cycle.
-	**Proof for connectiveness:**
-		Consider any two vertices $u$, $w$.
-		Since $u, w$ are not isolated, $u = v_i, w = v_j$ from some $i, j \in \{0, \dots, k-1\}$ because the cycle is Eulerian.
-		If $i \le j$, then follow the Eulerian cycle from $v_i \to v_j$
-		Otherwise, the same via $v_k$.
-	**Proof for even degree:**
-		Consider any vertex in the graph.
-		Its degree is twice the number of times it occurs in the Eulerian cycle, because every edge in the graph occurs in the cycle exactly once.
-**End**
-**Proof (_backwards_) direction:** - by induction on $|E|$
-	Inductive Hypothesis - The implication is true for all graphs $(V', E')$ such that $|E'| < |E|$ (strong induction)
-	Since there are no isolated vertices, pick $v_0 \in V$ with an edge $v_0 \to v_1$
-	Consider any path $\pi = v_0 \to v_1 \to \dots \to v_k$ and $G' = (V, E')$ be the graph obtained from $G$ by removing all edges in $\pi$.
-	**Claim 1:** If $v_k \ne v_0$, then $\deg_{G'}(v_k)$ is odd. Otherwise, $\deg_{G'}(v)$ is even $\forall v \in V$.
-	Let $k$ be such that $v_k = v_0$.
-	This is possible by the first part of **Claim 1**, and because the number of edges is finite.
-	By the second part of **Claim 1**, let $G_1, \dots, G_n$ be the connected components of $G'$, then the degree of every vertex in any $G_i$ is even.
-	By the inductive hypothesis, each $G_i$ has an Eulerian cycle $\kappa_i$ provided $G_i$ is not an isolated vertex.
-	**Claim 2:** $\pi$ visits each $G_i$, so for each $i \in \{1, 2, \dots, n\}$, $\pi$ contains some vertex $u_i$ of $G_i$.
-	By inserting each Eulerian cycle $\kappa_i$ (for $G_i$ which are not isolated vertices) in $\pi$ at the vertex $u_i$, we obtain an Eulerian cycle in $G$.
-**End**
+Suppose $v_0 \to v_1 \to \dots \to v_k = v_n$ is a an Eulerian cycle.
+
+**Proof for connectiveness:**
+
+<div class="proof-body">
+
+Consider any two vertices $u$, $w$.
+
+Since $u, w$ are not isolated, $u = v_i, w = v_j$ from some $i, j \in \{0, \dots, k-1\}$ because the cycle is Eulerian.
+
+If $i \le j$, then follow the Eulerian cycle from $v_i \to v_j$
+
+Otherwise, the same via $v_k$. $\square$
+
+</div>
+
+**Proof for even degree:**
+
+<div class="proof-body">
+
+Consider any vertex in the graph.
+
+Its degree is twice the number of times it occurs in the Eulerian cycle, because every edge in the graph occurs in the cycle exactly once. $\square$
+
+</div>
+
+</div>
+
+<br/>
+
+**Proof (backwards) direction:** - by induction on $|E|$
+
+<div class="proof-body">
+
+Inductive Hypothesis - The implication is true for all graphs $(V', E')$ such that $|E'| < |E|$ (strong induction)
+
+Since there are no isolated vertices, pick $v_0 \in V$ with an edge $v_0 \to v_1$
+
+Consider any path $\pi = v_0 \to v_1 \to \dots \to v_k$ and $G' = (V, E')$ be the graph obtained from $G$ by removing all edges in $\pi$.
+
+**Claim 1:** If $v_k \ne v_0$, then $\deg_{G'}(v_k)$ is odd. Otherwise, $\deg_{G'}(v)$ is even $\forall v \in V$.
+
+Let $k$ be such that $v_k = v_0$.
+
+This is possible by the first part of **Claim 1**, and because the number of edges is finite.
+
+By the second part of **Claim 1**, let $G_1, \dots, G_n$ be the connected components of $G'$, then the degree of every vertex in any $G_i$ is even.
+
+By the inductive hypothesis, each $G_i$ has an Eulerian cycle $\kappa_i$ provided $G_i$ is not an isolated vertex.
+
+**Claim 2:** $\pi$ visits each $G_i$, so for each $i \in \{1, 2, \dots, n\}$, $\pi$ contains some vertex $u_i$ of $G_i$.
+
+By inserting each Eulerian cycle $\kappa_i$ (for $G_i$ which are not isolated vertices) in $\pi$ at the vertex $u_i$, we obtain an Eulerian cycle in $G$. $\square$
+
+</div>
+
+</div>
+
+</div>
+
+### Types of Graphs
 
 #### Trees, Forests and K-Colourability
 
-- A **forest** is a graph without proper cycles (length of at least 1)
-- A **tree** is a connected forest
-- A **leaf** is a vertex of degree 1
+**Def**. A **forest** is a graph without proper cycles (length of at least 1)
 
-- A graph is K-Colourable if there exists a **proper** K-colouring $f : V \to \{1, 2, \dots, k\}$ such that $\forall (u,v) \in E : f(u) \ne f(v)$.
+**Def**. A **tree** is a connected forest
 
-- A graph is **bipartite** if it is 2-colourable.
-- $K_{n,m}$ is the **complete bipartite** graph with bipartitions of sizes $n$ and $m$.
+**Def**. A **leaf** is a vertex of degree 1
+
+**Def**. A graph is **$k$-colourable** if there exists a **proper** K-colouring 
+
+$$f : V \to \{1, 2, \dots, k\} \text{ such that } \forall (u,v) \in E : f(u) \ne f(v)$$
+
+**Def**. A graph is **bipartite** if it is 2-colourable.
+* $K_{n,m}$ is the **complete bipartite** graph with bipartitions of sizes $n$ and $m$.
 
 #### Planar Graphs
 
-- A graph is **planar** if it can be drawn without edges crossing.
-	- *mathematical definition is outside scope of this module*
+**Def**. A graph is **planar** if it can be drawn without edges crossing.
+- *mathematical definition is outside scope of this module*
 
-**Kuratowski's Theorem:** a graph is planar iff it does not have a subgraph which is isomorphic to a graph obtained from $K_5$ or $K_{3,3}$ by zero or more edge subdivisions.
+**Theorem (Kuratowski)**. a graph is planar iff it does not have a subgraph which is isomorphic to a graph obtained from $K_5$ or $K_{3,3}$ by zero or more edge subdivisions.
 
-**Four Colour Theorem:** Every planar graph is 4-colourable
+**Four Colour Theorem**. Every planar graph is 4-colourable
 
 **Euler's Theorem for Planar Graphs:**
 $$|V| - |E| + |F| = 2$$
 where $|F|$ is the number of faces
 
-- For forests, $|F| = 1$ (obviously forests are planar) so:
+**Special Case**. For forests, $|F| = 1$ (obviously forests are planar) so
 $$|V| - |E| = 1$$
+
+<br/>
 
 ## 11. Partial Orders
 
